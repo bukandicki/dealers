@@ -102,15 +102,18 @@ main
             )
     section.app__dealer-section
         .dealer-section__dealers
-            Card.dealer-section__dealer(
-                v-for="dealer in dealers"
-                :key="dealer.id"
-                :dealer="dealer"
-                @click="handleSelectedDealer(dealer)"
-            )
+            h1(v-if="!dealers.length") No dealers founded!
+            template(v-else)
+                Card.dealer-section__dealer(
+                    v-for="dealer in dealers"
+                    :key="dealer.id"
+                    :dealer="dealer"
+                    @click="handleSelectedDealer(dealer)"
+                )
 
         Button.dealer-section__button(
             title="LOAD MORE"
+            :disabled="!dealers.length"
             @click="handleLoadMore"
             :loading="isLoading"
         )
