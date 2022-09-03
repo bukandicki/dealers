@@ -5,6 +5,13 @@
     justify-content: space-between
     padding: 16px 24px
 
+    &__logo
+        z-index: 2
+
+    &__wrapper
+        display: flex
+        align-items: center
+
     &__links
         display: flex
         align-items: center
@@ -44,6 +51,7 @@
         border-radius: 5px
         background-color: #BA160A
         cursor: pointer
+        z-index: 2
 
         &::before,
         &::after
@@ -63,5 +71,21 @@
 @media only screen and (max-width: 768px)
     .navbar
         &__links
-            li:not(:last-of-type)
-                display: none
+            width: 100%
+            position: absolute
+            top: 0
+            left: 0
+            flex-direction: column
+            background-color: #000
+            transform: translateY(-100%)
+            opacity: 0
+
+            &--show
+                opacity: 1
+                transform: translateY(27%)
+
+        &__link
+            width: 100%
+            justify-content: center
+            padding: 1rem
+            margin: 0
