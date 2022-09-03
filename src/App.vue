@@ -38,7 +38,10 @@ const customFetchMethod = async (action, ...arg) => {
     }
 };
 
-// provinces.value = await customFetchMethod(getProvinces);
+const fetchProvinces = async () => {
+    // const data = await customFetchMethod(getProvinces);
+    // provinces.value = data;
+};
 
 const handleLoadMore = async () => {
     query.page += 1;
@@ -71,6 +74,8 @@ const handleSelectedDealer = (dealer) => {
 const handleModalOnCLose = () => {
     showModal.value = false;
 };
+
+await fetchProvinces();
 </script>
 
 <template lang="pug">
