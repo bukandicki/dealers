@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref } from "vue";
+import { reactive, ref, onMounted } from "vue";
 import { getProvinces, getDealers } from "@/lib/api";
 import { socialMedia, responseDealers, responseProvince } from "@/lib/constant";
 
@@ -75,7 +75,9 @@ const handleModalOnCLose = () => {
     showModal.value = false;
 };
 
-await fetchProvinces();
+onMounted(async () => {
+    await fetchProvinces();
+});
 </script>
 
 <template lang="pug">
