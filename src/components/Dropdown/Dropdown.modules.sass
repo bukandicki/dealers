@@ -1,0 +1,82 @@
+.dropdown
+    display: flex
+    flex-direction: column
+    position: relative
+
+    &__wrapper
+        display: inherit
+        flex-direction: inherit
+
+    &__label
+        margin-bottom: 12px
+        font-weight: 500
+        font-size: 20px
+        color: #9B9B9B
+
+    &__input-container
+        display: inherit
+        height: 56px
+        align-items: center
+        padding: 0 12px
+        border: 1px solid rgba(0, 0, 0, 0.2)
+
+    &__search-icon,
+    &__chevron-icon
+        width: 22px
+        height: 22px
+
+    &__chevron-icon
+        fill: #000
+
+    &__input
+        width: 100%
+        height: 100%
+        margin: 0 6px
+        outline: none
+        border: none
+        font-weight: 500
+        font-size: 16px
+        line-height: 19px
+        color: #4C4C4C
+
+    &__current-location
+        margin-top: 10px
+        font-weight: 500
+        font-size: 16px
+        color: #000
+        display: flex
+        align-items: center
+        cursor: pointer
+        width: max-content
+
+        svg
+            vertical-align: bottom
+            width: 22px
+            height: 22px
+            margin-right: 6px
+
+        &:hover
+            color: #BA160A
+
+    &__results
+        width: 100%
+        left: 0
+        top: 110px
+        max-height: 300px
+        background-color: #fff
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px
+        border-radius: 16px
+        overflow-x: hidden
+        overflow-y: auto
+        position: absolute
+        z-index: 2
+        list-style: none
+
+    &__result
+        padding: 14px 16px
+        cursor: pointer
+        font-weight: 500
+
+        &:hover
+            background-color: rgba(0, 0, 0, .03)
+            color: #BA160A

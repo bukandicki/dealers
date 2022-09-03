@@ -1,0 +1,109 @@
+.menu
+    width: 100%
+    position: relative
+    position: fixed
+    left: 50%
+    bottom: 25px
+    padding: 1rem 0
+    transform: translateX(-50%)
+
+    &__wrapper
+        width: 94%
+        height: 60px
+        display: flex
+        margin: 0 auto
+        align-items: center
+        background: #000000
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4)
+        border-radius: 40px 0px 0px 40px
+
+    &__links
+        width: 100%
+        height: 100%
+        display: flex
+        align-items: center
+        justify-content: space-around
+
+    &__link
+        font-weight: 400
+        font-size: 14px
+        cursor: pointer
+        color: #FFFFFF
+
+        svg
+            width: 20px
+            height: 20px
+            margin-right: 8px
+            vertical-align: middle
+
+        &:hover
+            color: #ff4638
+    &__close
+        height: 100%
+        width: 60px
+        display: flex
+        align-items: center
+        justify-content: center
+        background: #BA160A
+        cursor: pointer
+
+        svg
+            width: 20px
+            height: 20px
+            margin: auto
+            fill: #fff
+
+        &::before
+            content: ""
+            display: block
+            position: absolute
+            width: 22px
+            height: 22px
+            border-radius: 4px
+            border: solid 2px rgba(#fff, .4)
+
+        &:hover
+            opacity: .8
+
+@media only screen and (max-width: 768px)
+    .menu
+        bottom: 0
+        padding: 0
+
+        &__wrapper
+            width: 100%
+            height: unset
+            flex-direction: column
+            border-radius: 20px 20px 0 0
+            transform: translateY(80%)
+
+            &:hover
+                transform: translateY(0)
+
+                .menu__links::before
+                    background-color: #BA160A
+
+        &__links
+            flex-direction: column
+            overflow: hidden
+            padding-top: 25px
+
+            &::before
+                content: ""
+                display: block
+                width: 80px
+                height: 5px
+                margin-bottom: 50px
+                border-radius: 10px
+                background-color: #fff
+
+        &__link
+            padding: 1rem 0
+            width: 100%
+            text-align: center
+
+            &:hover
+                background-color: rgba(#fff, .1)
+
+        &__close
+            display: none

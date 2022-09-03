@@ -1,0 +1,67 @@
+.navbar
+    background-color: #000
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: 16px 24px
+
+    &__links
+        display: flex
+        align-items: center
+        list-style: none
+        color: #fff
+
+    &__euro-link
+        height: 48px
+
+    &__link,
+    &__hamburger
+        margin-left: 40px
+
+    &__link
+        display: flex
+        align-items: center
+        cursor: pointer
+        text-transform: uppercase
+        font-weight: 700
+        font-size: 16px
+
+        svg
+            margin-left: 6px
+            width: 20px
+            height: 20px
+            fill: #fff
+
+        &:hover
+            color: #BA160A
+
+            svg
+                fill: #BA160A
+
+    &__hamburger
+        width: 26px
+        height: 3px
+        border-radius: 5px
+        background-color: #BA160A
+        cursor: pointer
+
+        &::before,
+        &::after
+            content: ""
+            display: block
+            width: inherit
+            height: inherit
+            background-color: inherit
+            border-radius: inherit
+
+        &::before
+            transform: translateY(-6px)
+
+        &::after
+            transform: translateY(3px)
+
+@media only screen and (max-width: 768px)
+    .navbar
+        &__links
+            li:not(:last-of-type)
+                display: none

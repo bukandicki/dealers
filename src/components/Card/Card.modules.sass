@@ -1,0 +1,52 @@
+.card
+    padding: 24px
+    border: solid 4px transparent
+    border-radius: 20px
+    background-color: #F1F1F1
+    cursor: pointer
+
+    &__details
+        position: relative
+
+    &__pin
+        position: absolute
+        left: -9px
+        margin-right: 90px
+
+    &__name,
+    &__services,
+    &__address
+        margin-left: 54px
+
+    &__name
+        font-weight: 700
+        font-size: 20px
+        margin-bottom: 8px
+
+    &__address
+        font-weight: 400
+        font-size: 16px
+        color: #4C4C4C
+
+    &__services
+        display: flex
+        flex-wrap: wrap
+        margin-top: 42px
+
+    &__service
+        font-weight: 500
+        font-size: 12px
+        line-height: 24px
+        text-transform: uppercase
+        color: #4C4C4C
+
+        &:not(:last-of-type)::after
+            margin: 0 10px
+            content: "•"
+
+    &:hover
+        border: solid 4px rgba(255, 255, 255, .1)
+        box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset
+
+        .card__name
+            color: #BA160A

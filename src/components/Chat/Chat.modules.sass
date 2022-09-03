@@ -1,0 +1,36 @@
+.chat
+    width: 175px
+    height: 60px
+    position: absolute
+    right: 3%
+    top: -80%
+    display: flex
+    align-items: center
+    padding: 19px 16px
+    border-radius: 30px
+    background-color: #BA160A
+    background-image: url("@/assets/images/mira.png")
+    background-repeat: no-repeat
+    background-position: 100%
+    cursor: pointer
+
+    &__icon
+        width: 22px
+        height: 22px
+        margin-right: 9px
+        fill: #fff
+
+    &__name
+        font-weight: 700
+        font-size: 14px
+        color: #FFF
+        pointer-events: none
+
+    &:hover
+        opacity: .7
+
+@media only screen and (max-width: 768px)
+    .chat
+        top: unset
+        bottom: 25%
+        transform: scale(.85)

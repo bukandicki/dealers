@@ -1,0 +1,55 @@
+.banner
+    height: 400px
+    padding: 32px 60px
+    background-image: url("@/assets/images/illustration.png")
+    background-size: 73%
+    background-position: 100% 45%
+    background-repeat: no-repeat
+    background-color: #000
+    color: #fff
+    box-shadow: inset 500px 0px 1000px 0 #000
+    overflow: hidden
+
+    &__title
+        width: 470px
+        margin-bottom: 12px
+        font-weight: 700
+        font-size: 48px
+        line-height: 56px
+        text-transform: uppercase
+
+    &__desc
+        width: 500px
+
+        p
+            margin-bottom: 25px
+
+    &__cta-logo
+        height: 45px
+        cursor: pointer
+
+        &:hover
+            opacity: .8
+
+        &:first-of-type
+            margin-right: 12px
+
+@media only screen and (max-width: 768px)
+    .banner
+        height: unset
+        padding: 30px
+        background-position-x: 27%
+        background-size: cover
+        box-shadow: inset 200px 250px 1000px 0 #000
+
+        &__title
+            font-size: 24px
+            max-width: 100%
+            line-height: 36px
+
+        &__desc
+            font-size: 12px
+            max-width: 100%
+
+        &__cta-logo
+            height: 32px

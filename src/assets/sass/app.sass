@@ -1,0 +1,129 @@
+.app
+    &__hero-section
+        height: 408px
+        background-image: url("@/assets/images/hero.png")
+        background-size: cover
+        background-repeat: no-repeat
+
+    &__search-section
+        padding: 120px 179px
+
+    &__dealer-section
+        padding: 0 90px
+        margin-bottom: 86px
+
+    &__banner-section
+        padding: 0 100px
+        margin-bottom: 90px
+
+    &__contact-section
+        margin-bottom: 112px
+
+.search-section
+    display: flex
+    justify-content: space-between
+    flex-direction: column
+
+    &__desc
+        display: flex
+        justify-content: space-between
+        font-weight: 400
+        font-size: 16px
+        margin-bottom: 72px
+
+        h1
+            font-weight: 700
+            font-size: 48px
+            text-transform: uppercase
+
+        span
+            display: block
+            max-width: 522px
+
+    &__dropdown
+        width: 55%
+
+.dealer-section
+    &__dealers
+        display: grid
+        grid-template-columns: repeat(auto-fit, minmax(393px, 1fr))
+        grid-gap: 40px
+
+    &__button
+        margin: 64px auto 0
+
+.contact-section
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+
+    &__title
+        font-weight: 700
+        font-size: 14px
+        color: rgba(#4C4C4C, .5)
+        margin-bottom: 24px
+
+        &::before
+            content: ""
+            display: block
+            width: 80px
+            height: 3px
+            border-radius: 10px
+            margin: 0 auto 40px
+            background: #BA160A
+
+    &__social
+        cursor: pointer
+
+        &:hover
+            fill: #BA160A !important
+
+    &__subtitle
+        font-weight: 400
+        font-size: 16px
+        color: #0A0A0A
+
+        &::after
+            content: ""
+            display: block
+            width: 60px
+            height: 3px
+            border-radius: 10px
+            margin: 20px auto 40px
+            background: #BA160A
+
+    &__copyright
+        width: 392px
+        text-align: center
+        font-weight: 500
+        font-size: 14px
+        text-transform: uppercase
+        color: rgba(#4C4C4C, .5)
+
+@media only screen and (max-width: 768px)
+    .app
+        &__hero-section
+            height: 300px
+            background-position-x: 46%
+            background-attachment: unset
+
+        &__search-section,
+        &__dealer-section,
+        &__banner-section
+            padding: 30px
+
+    .search-section
+        &__desc
+            flex-direction: column
+        &__dropdown
+            width: 100%
+
+    .dealer-section
+        &__dealers
+            grid-template-columns: 1fr
+
+    .contact-section
+        &__copyright
+            width: 100%
+            padding: 0 30px

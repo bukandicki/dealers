@@ -1,0 +1,232 @@
+.modal
+    width: 100vw
+    height: 100vh
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 5
+    visibility: hidden
+    opacity: 0
+    display: flex
+    align-items: center
+    background: rgba(0, 0, 0, .5)
+
+    &__wrapper
+        min-width: 900px
+        min-height: 200px
+        padding: 32px
+        margin: 0 auto
+        background-color: #fff
+        transform: scale(0)
+
+    &__pin
+        position: absolute
+        left: -9px
+        fill: #BA160A
+
+    &__close
+        width: 32px
+        height: 32px
+        position: absolute
+        top: -6px
+        right: -6px
+        cursor: pointer
+
+        &:hover
+            fill: #BA160A
+
+    &__header
+        border-bottom: 1px solid #9B9B9B
+        padding-bottom: 30px
+        padding-left: 50px
+        position: relative
+
+    &__services
+        display: flex
+        flex-wrap: wrap
+        margin-bottom: 8px
+
+    &__service
+        font-weight: 500
+        font-size: 12px
+        line-height: 24px
+        text-transform: uppercase
+        color: #4C4C4C
+
+        &:not(:last-of-type)::after
+            margin: 0 10px
+            content: "•"
+
+    &__title
+        font-weight: 700
+        font-size: 24px
+
+    &__address
+        width: 650px
+        display: flex
+        justify-content: space-between
+        align-items: center
+        margin-bottom: 8px
+
+        span
+            &:first-of-type
+                max-width: 500px
+                font-weight: 400
+                font-size: 16px
+                color: #4C4C4C
+
+            &:last-of-type
+                align-self: flex-start
+                font-weight: 400
+                font-size: 16px
+                color: #9B9B9B
+
+    &__direction
+        width: max-content
+        display: block
+        margin-bottom: 32px
+        text-decoration: none
+        color: #000
+        font-weight: 700
+        font-size: 14px
+        text-transform: uppercase
+        cursor: pointer
+
+        svg
+            width: 14px
+            height: 14px
+            margin-right: 8px
+            vertical-align: middle
+
+        &::after
+            content: ""
+            display: block
+            width: 100%
+            height: 3px
+            margin-top: 6px
+            background-color: #000
+
+        &:hover
+            color: #BA160A
+
+            &::after
+                background-color: #BA160A
+
+            svg
+                fill: #BA160A
+
+    &__cta
+        display: flex
+
+        button
+            height: 44px
+            margin-right: 20px
+
+    &__body
+        padding: 30px 96px
+
+    &__operationals
+        width: 570px
+        display: flex
+        justify-content: space-between
+
+    &__operational-name,
+    &__contact-title
+        margin-bottom: 12px
+        font-weight: 500
+        font-size: 20px
+        color: #4C4C4C
+
+    &__operational-detail
+        display: flex
+        font-weight: 400
+        justify-content: space-between
+        margin-bottom: 10px
+
+        span
+            &:first-of-type
+                margin-right: 18px
+
+    &__contact-title
+        margin-top: 40px
+
+    &__contact-phone
+        font-weight: 400
+        display: flex
+        font-size: 16px
+
+        ul
+            list-style: none
+        li
+            margin-bottom: 6px
+
+        svg
+            width: 24px
+            height: 24px
+            vertical-align: middle
+            margin-right: 18px
+
+    &--show
+        opacity: 1
+        visibility: visible
+
+        .modal__wrapper
+            transform: scale(1)
+
+@media only screen and (max-width: 768px)
+    .modal
+        &__wrapper
+            min-width: unset
+            width: calc(100% - 60px)
+            overflow-y: auto
+            overflow-x: hidden
+
+        &__header
+            padding: unset
+            display: flex
+            flex-direction: column
+
+        &__title,
+        &__address
+            text-align: center
+
+        &__pin
+            position: relative
+            left: unset
+            margin: 0 auto 30px
+
+        &__services
+            justify-content: center
+
+        &__title
+            font-size: 20px
+
+        &__address
+            width: unset
+            flex-wrap: wrap
+            justify-content: center
+
+            span
+                &:first-of-type
+                    margin: 12px 0
+
+        &__direction
+            margin: 20px auto
+
+        &__cta
+            display: unset
+
+            button
+                margin: 12px 0
+
+        &__body
+            margin-top: 38px
+            padding: unset
+
+        &__operationals
+            width: 100%
+            justify-content: unset
+            flex-wrap: wrap
+
+        &__operational
+            width: 100%
