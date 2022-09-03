@@ -96,20 +96,20 @@ main
                     | dengan kendaraan dari Mitsubishi Motors Indonesia.
 
             Dropdown.search-section__dropdown(
-                :provinces="responseProvince"
+                :provinces="provinces"
                 @onSelected="handleSelectedProvince"
                 @onCurrentLocation="handleCurrentLocation"
             )
     section.app__dealer-section
-        .dealer-section__dealers
+        transition-group.dealer-section__dealers(name="card-transition" tag="div")
             h1(v-if="!dealers.length") No dealers founded!
             template(v-else)
-                Card.dealer-section__dealer(
-                    v-for="dealer in dealers"
-                    :key="dealer.id"
-                    :dealer="dealer"
-                    @click="handleSelectedDealer(dealer)"
-                )
+                    Card.dealer-section__dealer(
+                        v-for="dealer in dealers"
+                        :key="dealer.id"
+                        :dealer="dealer"
+                        @click="handleSelectedDealer(dealer)"
+                    )
 
         Button.dealer-section__button(
             title="LOAD MORE"

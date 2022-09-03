@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch } from "vue";
+import { ref, computed, watch, onMounted } from "vue";
 
 import ChevronDownIcon from "@/assets/icons/ChevronDown.vue";
 import SearchIcon from "@/assets/icons/Search.vue";
@@ -45,6 +45,10 @@ const handleSelectedProvince = (name) => {
 const handleHideDropdown = () => {
     hideDropdown.value = true;
 };
+
+onMounted(() => {
+    handleGetCurrentLocation();
+});
 </script>
 
 <template lang="pug">

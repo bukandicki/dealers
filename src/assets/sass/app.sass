@@ -104,6 +104,12 @@
         text-transform: uppercase
         color: rgba(#4C4C4C, .5)
 
+.card-transition
+    &-enter-from,
+    &-leave-to
+        opacity: 0
+        transform: translateX(30px)
+
 @media only screen and (max-width: 768px)
     .app
         &__hero-section
