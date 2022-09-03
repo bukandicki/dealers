@@ -1,7 +1,7 @@
 <script setup>
 import { reactive, ref, onMounted } from "vue";
 import { getProvinces, getDealers } from "@/lib/api";
-import { socialMedia, responseDealers, responseProvince } from "@/lib/constant";
+import { socialMedia } from "@/lib/constant";
 
 import Navbar from "@/components/Navbar/Navbar.component.vue";
 import Dropdown from "@/components/Dropdown/Dropdown.component.vue";
