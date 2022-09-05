@@ -21,17 +21,25 @@ watch(
 );
 
 const filteredProvinces = computed(() => {
-    return props.provinces?.filter((province) => province.name.toLocaleLowerCase().includes(inputQuery.value.toLocaleLowerCase()));
+    return props.provinces?.filter((province) =>
+        province.name
+            .toLocaleLowerCase()
+            .includes(inputQuery.value.toLocaleLowerCase())
+    );
 });
 
 const handleGetCurrentLocation = () => {
     if (!navigator.geolocation) console.error("Upss, Geolocation API not supported by this browser.");
-    else {
-        navigator.geolocation.getCurrentPosition(({ coords }) => {
+    else navigator.geolocation.getCurrentPosition(
+        ({ coords }) => {
             const { latitude, longitude } = coords;
             emits("onCurrentLocation", { latitude, longitude });
-        });
-    }
+        },
+        ({ message }) => {
+            console.error(message);
+            emits("onCurrentLocation", null);
+        }
+    );
 };
 
 const handleSelectedProvince = (name) => {

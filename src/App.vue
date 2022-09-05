@@ -16,6 +16,7 @@ import "./assets/sass/app.sass";
 const provinces = ref([]);
 const dealers = ref([]);
 const selectedDealer = ref({});
+const totalLength = ref(null);
 const showModal = ref(false);
 const isLoading = ref(false);
 
@@ -29,7 +30,7 @@ const query = reactive({
 const customFetchMethod = async (action, ...arg) => {
     try {
         isLoading.value = true;
-        const response = await action.apply(null, ...arg);
+        const response = await action.apply(null, arg);
         return Promise.resolve(response);
     } catch (err) {
         return Promise.reject(err);
@@ -39,31 +40,47 @@ const customFetchMethod = async (action, ...arg) => {
 };
 
 const fetchProvinces = async () => {
-    // const data = await customFetchMethod(getProvinces);
-    // provinces.value = data;
+    const data = await customFetchMethod(getProvinces);
+    provinces.value = data;
 };
 
 const handleLoadMore = async () => {
     query.page += 1;
 
-    // const { data } = await customFetchMethod(getDealers, query);
-    // dealers.value = [...dealers.value, ...data];
+    const { data, total } = await customFetchMethod(getDealers, query);
+
+    totalLength.value = total;
+    dealers.value = [...dealers.value, ...data];
 };
 
 const handleSelectedProvince = async (province) => {
     query.latlong = null;
     query.keyword = province;
 
-    // const { data } = await customFetchMethod(getDealers, query);
-    // dealers.value = data;
+    const { data, total } = await customFetchMethod(getDealers, query);
+
+    totalLength.value = total;
+    dealers.value = data;
 };
 
-const handleCurrentLocation = async ({ latitude, longitude }) => {
-    query.keyword = null;
-    query.latlong = `${latitude}, ${longitude}`;
+const handleCurrentLocation = async (dataLocation) => {
+    if (!dataLocation) {
+        const { data, total } = await customFetchMethod(getDealers, query);
 
-    // const { data } = await customFetchMethod(getDealers, query);
-    // dealers.value = data;
+        totalLength.value = total;
+        dealers.value = data;
+
+        return;
+    }
+
+    const { latitude, longitude } = dataLocation;
+    query.keyword = null;
+    query.latlong = `${latitude.toString()}, ${longitude.toString()}`;
+
+    const { data, total } = await customFetchMethod(getDealers, query);
+
+    totalLength.value = total;
+    dealers.value = data;
 };
 
 const handleSelectedDealer = (dealer) => {
@@ -113,7 +130,7 @@ main
 
         Button.dealer-section__button(
             title="LOAD MORE"
-            :disabled="!dealers.length"
+            :disabled="!dealers.length || dealers.length === totalLength"
             @click="handleLoadMore"
             :loading="isLoading"
         )
