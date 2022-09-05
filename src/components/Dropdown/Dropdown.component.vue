@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 
 import ChevronDownIcon from "@/assets/icons/ChevronDown.vue";
 import SearchIcon from "@/assets/icons/Search.vue";
@@ -11,14 +11,7 @@ const props = defineProps({ provinces: Array });
 const emits = defineEmits(["onSelected", "onCurrentLocation"]);
 
 const inputQuery = ref("");
-const hideDropdown = ref(false);
-
-watch(
-    () => inputQuery.value,
-    (val, oldVal) => {
-        if (val) hideDropdown.value = false;
-    }
-);
+const focus = ref(false);
 
 const filteredProvinces = computed(() => {
     return props.provinces?.filter((province) =>
@@ -46,12 +39,11 @@ const handleSelectedProvince = (name) => {
     const computeInput = typeof name === "string" ? name : name.target.value;
 
     inputQuery.value = computeInput;
-    hideDropdown.value = true;
     emits("onSelected", computeInput);
 };
 
 const handleHideDropdown = () => {
-    hideDropdown.value = true;
+    focus.value = false;
 };
 
 onMounted(() => {
@@ -68,13 +60,14 @@ onMounted(() => {
             input.dropdown__input(
                 v-model="inputQuery"
                 placeholder="Pilih Lokasi Terdekat"
+                @click="focus = true"
                 @keyup.enter="handleSelectedProvince"
             )
             ChevronDownIcon.dropdown__chevron-icon
         .dropdown__current-location(@click="handleGetCurrentLocation")
             TargetIcon
             span Gunakan lokasi saya saat ini
-    ul.dropdown__results(v-show="inputQuery && !hideDropdown")
+    ul.dropdown__results(v-show="focus")
         li.dropdown__result(
             v-for="province in filteredProvinces"
             :key="province.id"
